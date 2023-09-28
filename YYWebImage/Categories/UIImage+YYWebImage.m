@@ -637,7 +637,7 @@ static NSTimeInterval _yy_CGImageSourceGetGIFFrameDelayAtIndex(CGImageSourceRef 
         else if (blurRadius * scale < 1.5) iterations = 2;
         else iterations = 3;
         NSInteger tempSize = vImageBoxConvolve_ARGB8888(input, output, NULL, 0, 0, radius, radius, NULL, kvImageGetTempBufferSize | kvImageEdgeExtend);
-        void *temp = malloc(tempSize);
+        void *temp = calloc(1, tempSize);
         for (int i = 0; i < iterations; i++) {
             vImageBoxConvolve_ARGB8888(input, output, temp, 0, 0, radius, radius, NULL, kvImageEdgeExtend);
             // swap
